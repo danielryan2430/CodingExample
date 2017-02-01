@@ -27,7 +27,7 @@ case class Transaction(event_id: String, collector_tstamp: OffsetDateTime, domai
 object Transaction{
   val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
 
-  def formatDate(d:OffsetDateTime) = d.format(formatter).replace("+01:30","+00:00")
+  def formatDate(d:OffsetDateTime) = d.format(formatter)
 
   /**
     * The reason that I want to keep these functions generic is that I would want to avoid

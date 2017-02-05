@@ -68,7 +68,7 @@ Finally, run the spark-submit command. I have provided a pre-baked command that 
     /app/output.csv
 ```
 
-Since this example is only for a coding challenge, I've set the program to simply collect the data and output to a single file, however if there any other format you would like me to consider for larger datasets I would be glad to modify the program.
+Since this example is only for a coding challenge, I've set the program to simply collect the data and output to a single file.
 
 ## Retrieving Data
 To Retrieve your data, perform a docker cp on the master-node

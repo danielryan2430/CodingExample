@@ -1,6 +1,6 @@
 # Code Sample
 
-This coding sample uses Spark to convert a csv of transactions into a linked-list based on user-id and timestamp
+This coding sample uses Apache Spark to convert a csv of transactions into a linked-list based on user-id and timestamp
 
 
 input:

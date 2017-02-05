@@ -17,7 +17,6 @@ class TransactionTest extends FlatSpec with Matchers{
     Transaction.formatDate(date) shouldEqual dateString
   }
   "parseFromCSV" should "return a user" in {
-    val x = Transaction.parseDate("2015-01-01T01:30:55.000+00:00")
     val expected = Right(Transaction("babbe8fe-5dd0-4c53-b1ea-4826095ac925", Transaction.parseDate("2016-01-01T01:30:55.000+00:00"), "fee830db7fd1554b", "/blades"))
     Transaction.parseFromCSV(fullValue) shouldEqual expected
   }

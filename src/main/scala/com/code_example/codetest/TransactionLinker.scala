@@ -49,14 +49,12 @@ object TransactionLinker extends App {
     */
 
   def linkSortedList: (List[Transaction]) => List[Transaction] = {
-    users => {
-      var nextValue = ""
-      val answer = users.reverse.map(d => {
-        d.setNextEventId(nextValue)
-        nextValue = d.event_id
-        d
-      })
-      answer
+    transactions => {
+      def linkValues(t:List[Transaction], nextId:String):List[Transaction] = {
+        if(t.isEmpty) t
+        else t.head.setNextEventId(nextId) +: linkValues(t.tail, t.head.event_id)
+      }
+      linkValues(transactions.reverse, "").reverse
     }
   }
 

@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter
 /**
   * Created by danielimberman on 29/01/17.
   */
-case class Transaction(event_id: String, collector_tstamp: OffsetDateTime, domain_userid: String, page_urlpath: String, var next_event_id: String = "") extends Serializable{
+case class Transaction(event_id: String, collector_tstamp: OffsetDateTime, domain_userid: String, page_urlpath: String, next_event_id: String = "") extends Serializable{
 
   import Transaction._
   def toCsvEntry(addEventId: Boolean = false) = {
@@ -21,11 +21,12 @@ case class Transaction(event_id: String, collector_tstamp: OffsetDateTime, domai
     fieldValues.map( formatReleventTypes).mkString(",")
   }
 
-  def setNextEventId(nextId:String) = this.next_event_id = nextId
+  def setNextEventId(nextId:String) = Transaction(event_id, collector_tstamp, domain_userid, page_urlpath, nextId)
 }
 
 object Transaction{
-  val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
+  val datePattern = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
+  val formatter = DateTimeFormatter.ofPattern(datePattern)
 
   def formatDate(d:OffsetDateTime) = d.format(formatter)
 

@@ -3,7 +3,6 @@ package com.code_example.codetest
 import java.time._
 
 import org.apache.spark.{SparkConf, SparkContext}
-import org.joda.time.DateTime
 import org.scalacheck.{Gen, Arbitrary}
 import org.scalatest.prop.Checkers
 import org.scalatest.{Matchers, FlatSpec}
@@ -52,10 +51,10 @@ class TransactionLinkerTest extends FlatSpec with Matchers with Checkers{
       val answer = TransactionLinker.linkTransactionsToNextTimestamp(userRDD).collect().toList.sorted
 
       answer.length shouldEqual transactions.length
-      val releventInfo = answer.map(_.split(",")).map(t => (t(0), Transaction.parseDate(t(1)), Transaction.parseNextId(t.toList)))
-      val eventMap = releventInfo.map {case (event, date, next) => (event, date)}.toMap
+      val relevantInfo = answer.map(_.split(",")).map(t => (t(0), Transaction.parseDate(t(1)), Transaction.parseNextId(t.toList)))
+      val eventMap = relevantInfo.map {case (event, date, next) => (event, date)}.toMap
 
-      releventInfo.forall {
+      relevantInfo.forall {
         case (event, date, next) if  next != "" && date == eventMap(next) => true
         case (event, date, next) if next != "" => date.isBefore(eventMap(next))
         case _ => true

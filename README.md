@@ -1,10 +1,23 @@
 # Code Sample
 
+This coding sample uses Spark to convert a csv of transactions into a linked-list based on user-id and timestamp
+
+
+input:
+```
+<event id>,<timestamp>,<session-id>,<page url>
+```
+
+output:
+```
+<event id>,<timestamp>,<session-id>,<page url>,<next-event-id>
+```
+
 
 
 ## Build Versions
 
-For this coding test I used Spark 1.6.0 with Scala 2.10.5.
+For this coding test I used Spark 1.6.0 with Scala 2.11.5.
 
 ## Building/Loading to Docker
 
